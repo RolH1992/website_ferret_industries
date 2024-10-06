@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferret Industries - Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-color: #2E4053; /* Dark Slate Blue background */
+            color: #F6F5F5;
+        }
+        .services-list {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .service-item {
+            margin-bottom: 1.5rem;
+            background-color: #58A4B0; /* Calm Teal background */
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .service-header {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: #F76C5E; /* Soft Coral */
+        }
+        .service-item h2 {
+            font-size: 1.5rem;
+            color: #F4D35E; /* Warm Yellow */
+        }
+        .service-item p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .service-item .price {
+            font-size: 1.2rem;
+            color: #F6F5F5;
+            font-weight: bold;
+        }
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .quantity-button {
+            background-color: #F76C5E;
+            color: #F6F5F5;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .quantity-button:hover {
+            background-color: #F4D35E;
+            color: #2E4053;
+        }
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            font-size: 1rem;
+            border: none;
+            background-color: #F6F5F5;
+            color: #2E4053;
+            border-radius: 0.25rem;
+        }
+        .total-container {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+        .checkout-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .checkout-button {
+            background-color: #F76C5E; /* Soft Coral button */
+            color: #F6F5F5; /* White text */
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        .checkout-button:hover {
+            background-color: #F4D35E; /* Warm yellow hover */
+            color: #2E4053; /* Darker text */
+        }
+    </style>
+    <script>
+        // Prices for services
+        const prices = {
+            service1: 2500,
+            service2: 3800,
+            service3: 7500
+        };
+
+        function updateTotal() {
+            const quantity1 = parseInt(document.getElementById('quantity1').value);
+            const quantity2 = parseInt(document.getElementById('quantity2').value);
+            const quantity3 = parseInt(document.getElementById('quantity3').value);
+
+            const total = (quantity1 * prices.service1) + (quantity2 * prices.service2) + (quantity3 * prices.service3);
+            
+            document.getElementById('total').innerText = "Total: ZAR " + total;
+            document.getElementById('total-input').value = total;
+        }
+
+        function incrementQuantity(serviceId) {
+            const input = document.getElementById(serviceId);
+            let currentValue = parseInt(input.value);
+            input.value = currentValue + 1;
+            updateTotal();
+        }
+
+        function decrementQuantity(serviceId) {
+            const input = document.getElementById(serviceId);
+            let currentValue = parseInt(input.value);
+            if (currentValue > 0) {
+                input.value = currentValue - 1;
+                updateTotal();
+            }
+        }
+    </script>
+</head>
+<body onload="updateTotal()">
+
+    <header class="bg-[#58A4B0] p-4">
+        <nav>
+            <ul class="flex justify-center space-x-4">
+                <li><a href="index.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Home</a></li>
+                <li><a href="members.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Members</a></li>
+                <li><a href="contact.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="service-header">Our Services</div>
+
+    <form action="checkout.html" method="GET">
+        <div class="services-list">
+            <!-- Service 1 -->
+            <div class="service-item">
+                <h2>Studio Light Repairs</h2>
+                <p>We offer expert studio light repairs, ensuring your equipment is functioning perfectly.</p>
+                <p class="price">Cost: ZAR 2,500</p>
+                <div class="quantity-container">
+                    <button type="button" class="quantity-button" onclick="decrementQuantity('quantity1')">-</button>
+                    <input id="quantity1" class="quantity-input" type="text" name="quantity1" value="0" readonly>
+                    <button type="button" class="quantity-button" onclick="incrementQuantity('quantity1')">+</button>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-item">
+                <h2>Upgrades & Maintenance</h2>
+                <p>Upgrade and maintain your lighting systems for optimal performance.</p>
+                <p class="price">Cost: ZAR 3,800</p>
+                <div class="quantity-container">
+                    <button type="button" class="quantity-button" onclick="decrementQuantity('quantity2')">-</button>
+                    <input id="quantity2" class="quantity-input" type="text" name="quantity2" value="0" readonly>
+                    <button type="button" class="quantity-button" onclick="incrementQuantity('quantity2')">+</button>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-item">
+                <h2>Custom Light Manufacturing</h2>
+                <p>Tailor-made lighting solutions for your professional needs.</p>
+                <p class="price">Cost: ZAR 7,500</p>
+                <div class="quantity-container">
+                    <button type="button" class="quantity-button" onclick="decrementQuantity('quantity3')">-</button>
+                    <input id="quantity3" class="quantity-input" type="text" name="quantity3" value="0" readonly>
+                    <button type="button" class="quantity-button" onclick="incrementQuantity('quantity3')">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Section -->
+        <div class="total-container">
+            <p id="total">Total: ZAR 0</p>
+            <input type="hidden" name="total" id="total-input" value="0">
+        </div>
+
+        <div class="checkout-container">
+            <button type="submit" class="checkout-button">Proceed to Checkout</button>
+        </div>
+    </form>
+
+</body>
+</html>

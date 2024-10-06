@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferret Industries - Members</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-color: #2E4053; /* Dark Slate Blue background */
+            color: #F6F5F5;
+        }
+        .members-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 2rem auto;
+            gap: 2rem;
+        }
+        .member {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background-color: #58A4B0; /* Calm Teal background */
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .member-about {
+            flex: 1;
+        }
+        .member-about h2 {
+            color: #F4D35E; /* Warm Yellow */
+            font-size: 1.5rem;
+        }
+        .member-about p {
+            color: #F6F5F5; /* Light text */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="p-4 bg-[#58A4B0]">
+        <nav>
+            <ul class="flex justify-center space-x-4">
+                <li><a href="index.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Home</a></li>
+                <li><a href="services.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Services</a></li>
+                <li><a href="contact.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="members-container">
+        <!-- Member 1 -->
+        <div class="member">
+            <img src="lady.webp" alt="Jane Smith">
+            <div class="member-about">
+                <h2>Jane Smith</h2>
+                <p>Jane is the project manager overseeing operations and ensuring that every project meets the company’s high standards. She has a background in electrical engineering and project management.</p>
+            </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="member">
+            <img src="guy1.webp" alt="John Doe">
+            <div class="member-about">
+                <h2>John Doe</h2>
+                <p>John is the head engineer at Ferret Industries, specializing in light engineering solutions. With over 10 years of experience in the industry, he leads the team in innovative solutions.</p>
+            </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="member">
+            <img src="guy2.webp" alt="Alex Johnson">
+            <div class="member-about">
+                <h2>Alex Johnson</h2>
+                <p>Alex is the senior technician, responsible for the day-to-day technical operations and making sure every custom lighting solution meets customer requirements.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

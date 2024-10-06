@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferret Industries - Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background-color: #2E4053; /* Dark Slate Blue background */
+            color: #F6F5F5; /* Off-white/light gray text */
+        }
+        .checkout-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #58A4B0; /* Calm Teal background */
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #F76C5E; /* Soft Coral */
+            margin-bottom: 1.5rem;
+        }
+        .order-summary {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #F6F5F5; /* Light text */
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            border: none;
+            border-radius: 0.25rem;
+            background-color: #F6F5F5;
+            color: #2E4053;
+            font-size: 1rem;
+        }
+        .submit-button {
+            background-color: #F76C5E; /* Soft Coral */
+            color: #F6F5F5;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .submit-button:hover {
+            background-color: #F4D35E; /* Warm yellow hover */
+            color: #2E4053;
+        }
+        .remove-button {
+            background-color: #F76C5E;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .remove-button:hover {
+            background-color: #D9534F; /* Danger red hover */
+        }
+    </style>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || 0;
+        }
+
+        function updateOrderSummary() {
+            const quantity1 = getQueryParam('quantity1');
+            const quantity2 = getQueryParam('quantity2');
+            const quantity3 = getQueryParam('quantity3');
+
+            document.getElementById('item1-quantity').innerText = `Studio Light Repairs: x${quantity1}`;
+            document.getElementById('item2-quantity').innerText = `Upgrades & Maintenance: x${quantity2}`;
+            document.getElementById('item3-quantity').innerText = `Custom Light Manufacturing: x${quantity3}`;
+
+            const total = (quantity1 * 2500) + (quantity2 * 3800) + (quantity3 * 7500);
+            document.getElementById('total').innerText = `Total: ZAR ${total}`;
+        }
+
+        window.onload = updateOrderSummary;
+
+        function removeItem(itemId) {
+            const itemRow = document.getElementById(itemId);
+            itemRow.remove();
+        }
+    </script>
+</head>
+<body>
+
+    <header class="p-4 bg-[#58A4B0]">
+        <nav>
+            <ul class="flex justify-center space-x-4">
+                <li><a href="index.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Home</a></li>
+                <li><a href="services.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Services</a></li>
+                <li><a href="contact.html" class="text-[#F6F5F5] hover:text-[#F4D35E]">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        
+        <div class="order-summary">
+            <strong>Order Summary:</strong>
+            <div class="summary-item" id="item1">
+                <span id="item1-quantity">Studio Light Repairs: x0</span>
+                <button class="remove-button" onclick="removeItem('item1')">Remove</button>
+            </div>
+            <div class="summary-item" id="item2">
+                <span id="item2-quantity">Upgrades & Maintenance: x0</span>
+                <button class="remove-button" onclick="removeItem('item2')">Remove</button>
+            </div>
+            <div class="summary-item" id="item3">
+                <span id="item3-quantity">Custom Light Manufacturing: x0</span>
+                <button class="remove-button" onclick="removeItem('item3')">Remove</button>
+            </div>
+            <div class="summary-item">
+                <strong id="total">Total: ZAR 0</strong>
+            </div>
+        </div>
+
+        <form action="confirmation.html" method="POST">
+            <!-- User Personal Information -->
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" placeholder="Enter your address" rows="3" required></textarea>
+
+            <!-- Payment Information -->
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+
+            <label for="expiry">Expiry Date:</label>
+            <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="Enter the CVV" required>
+
+            <!-- Adding the gap between CVV and Submit Payment -->
+            <div style="margin-bottom: 1.5rem;"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button">Submit Payment</button>
+        </form>
+    </div>
+
+</body>
+</html>
