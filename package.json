@@ -1,16 +1,28 @@
 {
-  "name": "website",
+  "name": "ferret-industries-website",
   "version": "1.0.0",
-  "description": "",
-  "main": "document.js",
+  "description": "Website for Ferret Industries specializing in professional studio lighting solutions",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "build": "npm run build:tailwind && npm run build:assets",
+    "build:tailwind": "npx tailwindcss -i ./src/styles.css -o ./build/styles.css --minify",
+    "build:assets": "cp -r ./src/assets ./build/assets"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Ferret Industries",
+    "studio lighting",
+    "engineering solutions",
+    "custom lighting"
+  ],
+  "author": "Roland John Hiscutt",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.0",
     "tailwindcss": "^3.4.10"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14"
   }
 }
