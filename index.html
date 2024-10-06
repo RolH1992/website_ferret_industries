@@ -98,9 +98,10 @@
         }
         nav ul {
             display: flex;
-            flex-direction: row;
+            flex-direction: row; /* Ensure the nav links are in a row */
             gap: 1rem;
             justify-content: center;
+            width: 100%; /* Ensure it uses full width */
         }
         nav ul li a {
             color: #F6F5F5; /* Light text for nav links */
@@ -115,7 +116,7 @@
 
     <header class="p-4">
         <nav>
-            <ul class="flex flex-col md:flex-row justify-center space-x-4">
+            <ul class="flex justify-center space-x-4">
                 <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
                 <li><a href="javascript:void(0);" onclick="toggleDropdown()">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
