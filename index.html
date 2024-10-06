@@ -13,8 +13,21 @@
         }
         .catchphrase {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem; /* Smaller size for mobile */
             color: #F76C5E; /* Soft Coral for headers */
+            margin-top: 2rem; /* Add margin to separate from header */
+        }
+        @media (min-width: 768px) {
+            .catchphrase {
+                font-size: 1.75rem; /* Increase for tablets */
+                margin-top: 3rem; /* More margin on larger screens */
+            }
+        }
+        @media (min-width: 1024px) {
+            .catchphrase {
+                font-size: 2rem; /* Larger size for desktops */
+                margin-top: 4rem;
+            }
         }
         .main-content {
             display: flex;
@@ -22,7 +35,6 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            margin-top: -4rem;
         }
         .dropdown-content {
             display: none;
@@ -33,13 +45,24 @@
             margin-top: 10px;
             font-size: 1rem;
             text-align: left;
-            width: 600px; /* Fixed width */
+            width: 90%; /* Make the dropdown responsive */
+            max-width: 600px; /* Limit width on larger screens */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .button-group {
             display: flex;
+            flex-direction: column;
             gap: 0.5rem;
             margin-top: 1rem;
+            width: 100%; /* Full width for mobile */
+            max-width: 600px; /* Limit width on larger screens */
+            justify-content: center;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .button-group {
+                flex-direction: row; /* Horizontal layout for larger screens */
+            }
         }
         .custom-button {
             background-color: #F4D35E; /* Warm yellow for buttons */
@@ -47,6 +70,7 @@
             font-weight: bold;
             padding: 0.5rem 1rem;
             border-radius: 0.25rem;
+            text-align: center;
         }
         .custom-button:hover {
             background-color: #58A4B0; /* Calm Teal on hover */
@@ -72,6 +96,12 @@
         header {
             background-color: #58A4B0; /* Calm Teal for header */
         }
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: center;
+        }
         nav ul li a {
             color: #F6F5F5; /* Light text for nav links */
         }
@@ -85,7 +115,7 @@
 
     <header class="p-4">
         <nav>
-            <ul class="flex justify-center space-x-4">
+            <ul class="flex flex-col md:flex-row justify-center space-x-4">
                 <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
                 <li><a href="javascript:void(0);" onclick="toggleDropdown()">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -98,7 +128,7 @@
             Bright ideas, tailored light!
         </div>
 
-        <img src="IMG-20240917-WA0000.jpg" alt="Ferret Industries Logo" class="mx-auto rounded-full w-64 h-64 my-6">
+        <img src="IMG-20240917-WA0000.jpg" alt="Ferret Industries Logo" class="mx-auto rounded-full w-32 h-32 md:w-64 md:h-64 my-6">
 
         <div class="button-group">
             <button class="custom-button" onclick="toggleDropdown()">About</button>
